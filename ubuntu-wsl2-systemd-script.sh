@@ -68,7 +68,8 @@ Defaults        env_keep += PRE_NAMESPACE_PWD
 EOF
 
 if ! grep 'start-systemd-namespace' /etc/bash.bashrc >/dev/null; then
-  sudo sed -i 2a"# Start or enter a PID namespace in WSL2\nsource /usr/sbin/start-systemd-namespace\n" /etc/bash.bashrc
+  # sudo sed -i 2a"# Start or enter a PID namespace in WSL2\nsource /usr/sbin/start-systemd-namespace\n" /etc/bash.bashrc
+  echo -e "\n# Start or enter a PID namespace in WSL2\nsource /usr/sbin/start-systemd-namespace\n" | sudo tee -a /etc/bash.bashrc
 fi
 
 sudo rm -f /etc/systemd/user/sockets.target.wants/dirmngr.socket
